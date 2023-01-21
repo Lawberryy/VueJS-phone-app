@@ -10,7 +10,6 @@
         <div id="touches">
             <span class="touche" v-for="value in touchesValues" :key="value" @click="addInDivNumber(value)">{{ value }}</span>
             <div class="touche" id="call"><img class="phone-logo" src="@/assets/phone-solid.svg" alt="phone-logo"></div>
-            <!-- <font-awesome-icon icon="fa-solid fa-phone" /> -->
         </div>
     </div>
 </template>
@@ -45,7 +44,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 
 .clavier {
     display: flex;
@@ -55,6 +54,7 @@ export default {
 #find-contact {
     color: rgb(0, 101, 253);
     margin-top: 10px;
+    text-align: center;
 }
 
 .bloc-num {
