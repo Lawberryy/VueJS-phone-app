@@ -2,7 +2,7 @@
     <div>
         <h2>{{contact.nom}}</h2>
         <span>{{contact.numero}}</span>
-        <img class="phone-logo" src="@/assets/phone-solid.svg" alt="phone-logo">
+        <img @click="appel(contact)" class="phone-logo" src="@/assets/phone-solid.svg" alt="phone-logo">
     </div>
 </template>
 

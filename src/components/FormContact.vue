@@ -48,7 +48,6 @@ export default {
 
             if(this.formContact.numero.length >= 1 && this.formContact.nom.length >= 1) {
                 this.validMessage = true
-                // return
             }
 
 

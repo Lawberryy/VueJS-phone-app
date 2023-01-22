@@ -5,7 +5,9 @@
             <div>
                 <div id="num" v-for="value in divNumber" :key="value">{{ value }}</div>
             </div>
-            <div id="find-contact">???</div>
+            <div v-for="contact in contacts" :key="contact.nom" >
+                <div id="find-contact" v-if="matchingNumber">{{ contact.nom }}</div>
+            </div>
         </div>
         <div id="touches">
             <span class="touche" v-for="value in touchesValues" :key="value" @click="addInDivNumber(value)">{{ value }}</span>
@@ -19,12 +21,15 @@
 
 export default {
     name: 'ClavierView',
-
-    // data() {
-    //     return {
-    //         touchesValues: [1,2,3,4,5,6,7,8,9,'*',0,'#'],
-    //     }
-    // },
+    // props: [
+    //     'contacts'
+    // ],
+    
+    data() {
+        return {
+            matchingNumber: false,
+        }
+    },
 
     computed: {
         touchesValues() {
@@ -32,14 +37,27 @@ export default {
 		},
 		divNumber() {
 			return this.$store.state.divNumber
-		}
+		},
+        contacts() {
+            return this.$store.state.contacts
+        }
 	},
+
+    verifNumber() {
+        if(this.contacts.find(contact => contact.numero == this.divNumber)) {
+            this.matchingNumber = true
+            // return this.contacts.nom
+            // console.log(this.contacts)
+        }
+    },
 
     methods: {
         addInDivNumber(value) {
             this.$store.commit('addInDivNumber', value)
-        }
-    }
+            console.log(this.divNumber)
+            console.log(this.matchingNumber)
+        },
+    },
 }
 </script>
 
