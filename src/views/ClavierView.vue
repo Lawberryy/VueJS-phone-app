@@ -5,9 +5,10 @@
             <div>
                 <div id="num" v-for="value in divNumber" :key="value">{{ value }}</div>
             </div>
-            <div v-for="contact in contacts" :key="contact.nom" >
-                <div id="find-contact" v-if="matchingNumber">{{ contact.nom }}</div>
-            </div>
+            <!-- <div v-for="contact in contacts" :key="contact.nom" > -->
+                <div class="find-contact" v-if="matchingNumber">{{ contact.nom }}</div>
+                <div class="find-contact" v-if="!matchingNumber && this.divNumber.length >= 1">Numéro inconnu</div>
+            <!-- </div> -->
         </div>
         <div id="touches">
             <span class="touche" v-for="value in touchesValues" :key="value" @click="addInDivNumber(value)">{{ value }}</span>
@@ -69,7 +70,7 @@ export default {
     flex-direction: column;
 }
 
-#find-contact {
+.find-contact {
     color: rgb(0, 101, 253);
     margin-top: 10px;
     text-align: center;

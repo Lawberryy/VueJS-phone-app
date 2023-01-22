@@ -2,7 +2,7 @@
     <div>
         <h2>{{contact.nom}}</h2>
         <span>{{contact.numero}}</span>
-        <img @click="appel(contact)" class="phone-logo" src="@/assets/phone-solid.svg" alt="phone-logo">
+        <img @click="ajoutAppel(contact)" class="phone-logo" src="@/assets/phone-solid.svg" alt="phone-logo">
     </div>
 </template>
 
@@ -12,7 +12,21 @@ export default {
     name: 'CardContact',
     props: [
         'contact'
-    ]
+    ],
+
+    computed: {
+        // contacts() {
+        //     return this.$store.state.contacts
+        // },
+        appels() {
+            return this.$store.state.appels
+        }
+    },
+    methods: {
+        ajoutAppel(contact) {
+            this.$store.commit('ajoutAppel', contact)
+        }
+    }
 }
 </script>
 

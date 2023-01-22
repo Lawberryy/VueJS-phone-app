@@ -58,10 +58,10 @@ export default {
             this.$store.commit('ajoutContact', this.formContact)
 
 
-            this.formContact = {
-                nom: '',
-                numero: null,
-            }
+            // this.formContact = {
+            //     nom: '',
+            //     numero: null,
+            // }
         }
     }
 }

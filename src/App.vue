@@ -66,4 +66,13 @@ nav a.router-link-exact-active {
   /* color: rgb(238, 67, 135); */
   color: rgb(0, 101, 253);
 }
+
+@media screen and (max-width: 400px) {
+  #telephone {
+    width: 100%;
+  }
+  nav {
+    width: 100%;
+  }
+}
 </style>
