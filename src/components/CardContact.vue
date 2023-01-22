@@ -24,8 +24,21 @@ export default {
     },
     methods: {
         ajoutAppel(contact) {
-            this.$store.commit('ajoutAppel', contact)
-        }
+			this.$store.commit('ajoutAppel', {
+                nom: contact.nom,
+                // numero: contact.numero,
+                date: this.currentDate()
+            })
+		},
+
+        currentDate() {
+            let date = new Date();
+            let day = date.getDate() + '/' + (date.getMonth()) + '1' + '/' + date.getFullYear();
+            let hour = date.getHours() + "h" + date.getMinutes();
+            let timeofCall = 'le ' + day + ' à ' + hour;
+            console.log(timeofCall);
+            return timeofCall
+        },
     }
 }
 </script>

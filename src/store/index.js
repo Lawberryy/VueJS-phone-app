@@ -56,7 +56,8 @@ export default createStore({
     appels: [
       {
         nom: 'Contact1',
-        numero: '0606060607'
+        numero: '',
+        date: 'le 22/01/2023 à 22:00'
       },
     ]
   },

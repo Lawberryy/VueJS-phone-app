@@ -12,7 +12,7 @@
         </div>
         <div id="touches">
             <span class="touche" v-for="value in touchesValues" :key="value" @click="addInDivNumber(value)">{{ value }}</span>
-            <div class="touche" id="call"><img class="phone-logo" src="@/assets/phone-solid.svg" alt="phone-logo"></div>
+            <div class="touche" id="call"><img @click="ajoutAppel()" class="phone-logo" src="@/assets/phone-solid.svg" alt="phone-logo"></div>
         </div>
     </div>
 </template>
@@ -41,6 +41,9 @@ export default {
 		},
         contacts() {
             return this.$store.state.contacts
+        },
+        appels() {
+            return this.$store.state.appels
         }
 	},
 
@@ -57,6 +60,23 @@ export default {
             this.$store.commit('addInDivNumber', value)
             console.log(this.divNumber)
             console.log(this.matchingNumber)
+        },
+
+        ajoutAppel(contact) {
+			this.$store.commit('ajoutAppel', {
+                nom: contact.nom,
+                // numero: contact.numero,
+                date: this.currentDate()
+            })
+		},
+
+        currentDate() {
+            let date = new Date();
+            let day = date.getDate() + '/' + (date.getMonth()) + '1' + '/' + date.getFullYear();
+            let hour = date.getHours() + "h" + date.getMinutes();
+            let timeofCall = 'le ' + day + ' à ' + hour;
+            console.log(timeofCall);
+            return timeofCall
         },
     },
 }
