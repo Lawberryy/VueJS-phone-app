@@ -62,12 +62,16 @@ export default {
             console.log(this.matchingNumber)
         },
 
-        ajoutAppel(contact) {
+        ajoutAppel() {
 			this.$store.commit('ajoutAppel', {
-                nom: contact.nom,
-                // numero: contact.numero,
+                // nom: contact.nom,
+                numero: this.divNumber,
                 date: this.currentDate()
             })
+
+            if(this.contact.nom == '') {
+                this.contact.nom = 'inconnu'
+            }
 		},
 
         currentDate() {
