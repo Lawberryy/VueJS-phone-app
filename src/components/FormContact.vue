@@ -3,8 +3,11 @@
         <input type="text" placeholder="Nom du contact" v-model="formContact.nom"><br>
         <span v-if="formContact.nom.length < 1 && error" class="error">Veuillez remplir la case nom svp</span>
         <input type="text" placeholder="Numéro du contact" v-model="formContact.numero"><br>
-        <span v-if="formContact.numero == null && error" class="error">Veuillez remplir la case numéro svp</span>
+        <span v-if="formContact.numero == null && error" class="error">Veuillez remplir la case numéro svp</span><br>
+        <span v-if="isNaN(formContact.numero) && error" class="error">Veuillez rentrer des numéros seulement svp</span>
         <div><button type="submit">Ajouter</button></div>
+
+        <span v-if="validMessage" class="valid">Le contact a été ajouté</span>
     </form>
 </template>
 
@@ -22,7 +25,9 @@ export default {
             formContact: {
                 nom: '',
                 numero: null,
-            }
+            },
+
+            validMessage: false,
         }
     },
 
@@ -36,9 +41,14 @@ export default {
                 return
             }
 
-            if(this.formContact.numero == null) {
+            if(this.formContact.numero == null || isNaN(this.formContact.numero) || this.formContact.numero == '' || this.formContact.numero == ' ') {
                 this.error = true
                 return
+            }
+
+            if(this.formContact.numero.length >= 1 && this.formContact.nom.length >= 1) {
+                this.validMessage = true
+                // return
             }
 
 
@@ -61,9 +71,9 @@ export default {
 
 <style scoped>
 
-/* #form-contact {
-    background-color: blue;
-} */
+.valid {
+    color: rgb(36, 206, 101);
+}
 
 .error {
     color: red;
